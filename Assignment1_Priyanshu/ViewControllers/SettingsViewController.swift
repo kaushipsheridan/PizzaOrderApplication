@@ -8,6 +8,10 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    //Handling back button functionality
+    @IBAction func unwindSettings(sender: UIStoryboardSegue) { }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

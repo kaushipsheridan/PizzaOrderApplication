@@ -6,24 +6,41 @@
 //
 
 import UIKit
+import WebKit
 
-class ReviewViewController: UIViewController {
+class ReviewViewController: UIViewController, WKNavigationDelegate {
+    
+    @IBOutlet var reviewweb: WKWebView!
+    @IBOutlet var loading: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //setting url - creating request for the url - Load and set navigation delegate
+        let urlAdd = URL(string : "https://www.pizzapizza.ca/store/3/delivery")!;
+        
+        let url = URLRequest(url : urlAdd);
+        
+        reviewweb.load(url);
+        
+        reviewweb.navigationDelegate = self;
+        
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //handling loading icon
+    func webView(_ reviewweb: WKWebView, didStartProvisionalNavigation navigate : WKNavigation!) {
+        loading.isHidden = false;
+        loading.startAnimating();
     }
-    */
+    
+    //handling when load is done
+    
+    func webView(_ reviewweb: WKWebView, didFinish navigate : WKNavigation!){
+        loading.isHidden = true;
+        loading.stopAnimating();
+    }
+    
 
 }

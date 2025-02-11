@@ -9,7 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
-   
+    //Handling back button functionality
+    @IBAction func unwindNow(sender: UIStoryboardSegue) { }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
